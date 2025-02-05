@@ -1,6 +1,10 @@
 package com.ekachandra.loanmanagementapp
 
 import android.app.Application
+import com.ekachandra.core.di.networkModule
+import com.ekachandra.core.di.repositoryModule
+import com.ekachandra.loanmanagementapp.di.useCaseModule
+import com.ekachandra.loanmanagementapp.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -12,7 +16,12 @@ class MyApplication : Application() {
         startKoin {
             androidLogger(Level.NONE)
             androidContext(this@MyApplication)
-            modules()
+            modules(
+                networkModule,
+                repositoryModule,
+                useCaseModule,
+                viewModelModule
+            )
         }
     }
 }
