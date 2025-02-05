@@ -14,13 +14,15 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
-            androidLogger(Level.NONE)
+            androidLogger(Level.DEBUG)
             androidContext(this@MyApplication)
             modules(
-                networkModule,
-                repositoryModule,
-                useCaseModule,
-                viewModelModule
+                listOf(
+                    networkModule,
+                    repositoryModule,
+                    useCaseModule,
+                    viewModelModule
+                )
             )
         }
     }

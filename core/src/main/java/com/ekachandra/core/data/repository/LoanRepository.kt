@@ -19,8 +19,7 @@ class LoanRepository(
                 return LoanDataMapper.mapResponseToDomain(data)
             }
 
-            override suspend fun createCall(): Flow<ApiResponse<LoanResponse>> {
-                return remoteDataSource.getLoans()
-            }
+            override suspend fun createCall(): Flow<ApiResponse<LoanResponse>> =
+                remoteDataSource.getLoans()
         }.asFlow()
 }

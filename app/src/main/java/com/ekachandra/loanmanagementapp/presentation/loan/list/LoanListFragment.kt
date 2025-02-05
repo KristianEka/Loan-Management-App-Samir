@@ -6,11 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ekachandra.loanmanagementapp.databinding.FragmentLoanListBinding
+import com.ekachandra.loanmanagementapp.presentation.loan.LoanViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoanListFragment : Fragment() {
 
     private var _binding: FragmentLoanListBinding? = null
     private val binding get() = _binding!!
+    private val loanViewModel: LoanViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,6 +26,14 @@ class LoanListFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        loanViewModel.getLoans().observe(viewLifecycleOwner) {
+            binding.tvLoanList.text = it.data?.first()?.riskRating.toString()
+        }
     }
 
 }
