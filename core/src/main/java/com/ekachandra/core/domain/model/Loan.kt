@@ -4,6 +4,7 @@ import com.ekachandra.core.data.source.remote.response.DocumentsItem
 import com.ekachandra.core.data.source.remote.response.RepaymentSchedule
 
 data class Loan(
+    val id: String? = null,
     val borrowerName: String? = null,
     val borrowerEmail: String? = null,
     val loanAmount: Double? = null,

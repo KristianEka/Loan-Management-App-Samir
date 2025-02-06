@@ -10,6 +10,7 @@ object LoanDataMapper {
         val loanList = ArrayList<Loan>()
         input.map {
             val loan = Loan(
+                id = it.id,
                 borrowerName = it.borrower?.name,
                 borrowerEmail = it.borrower?.email,
                 loanAmount = it.amount,

@@ -4,9 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ekachandra.core.data.Resource
+import com.ekachandra.core.ui.LoanAdapter
 import com.ekachandra.loanmanagementapp.databinding.FragmentLoanListBinding
 import com.ekachandra.loanmanagementapp.presentation.loan.LoanViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -16,6 +17,8 @@ class LoanListFragment : Fragment() {
     private var _binding: FragmentLoanListBinding? = null
     private val binding get() = _binding!!
     private val loanViewModel: LoanViewModel by viewModel()
+
+    private lateinit var adapter: LoanAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,23 +36,31 @@ class LoanListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setAdapter()
+
         loanViewModel.getLoans().observe(viewLifecycleOwner) { loans ->
             when (loans) {
                 is Resource.Loading -> {
                 }
 
                 is Resource.Success -> {
-                    Toast.makeText(
-                        requireActivity(),
-                        loans.data?.get(0)?.purpose,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    binding.tvLoanList.text = loans.data?.get(0)?.purpose
+                    adapter.submitList(loans.data)
+
                 }
 
                 is Resource.Error -> {
                 }
             }
+        }
+    }
+
+    private fun setAdapter() {
+        adapter = LoanAdapter()
+
+        binding.apply {
+            rvLoan.layoutManager = LinearLayoutManager(requireContext())
+            rvLoan.setHasFixedSize(true)
+            rvLoan.adapter = adapter
         }
     }
 
