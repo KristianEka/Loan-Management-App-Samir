@@ -2,11 +2,9 @@ package com.ekachandra.core.data.source.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class LoanResponse(
-
-    @field:SerializedName("LoanResponse")
-    val loanResponse: List<LoanResponseItem?>? = null
-)
+//data class LoanResponse(
+//    val loanResponse: List<LoanResponseItem?>? = null
+//)
 
 data class InstallmentsItem(
 
@@ -23,7 +21,7 @@ data class Collateral(
     val type: String? = null,
 
     @field:SerializedName("value")
-    val value: Int? = null
+    val value: Double? = null
 )
 
 data class RepaymentSchedule(
@@ -38,7 +36,7 @@ data class LoanResponseItem(
     val interestRate: Double? = null,
 
     @field:SerializedName("amount")
-    val amount: Int? = null,
+    val amount: Double? = null,
 
     @field:SerializedName("purpose")
     val purpose: String? = null,
