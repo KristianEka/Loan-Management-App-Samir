@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
 data class InstallmentsItem(
 
     @field:SerializedName("amountDue")
-    val amountDue: Int? = null,
+    val amountDue: Double? = null,
 
     @field:SerializedName("dueDate")
     val dueDate: String? = null
