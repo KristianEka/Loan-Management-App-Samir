@@ -18,5 +18,9 @@
         android:id="@+id/loanDetailFragment"
         android:name="com.ekachandra.loanmanagementapp.presentation.loan.detail.LoanDetailFragment"
         android:label="fragment_loan_detail"
-        tools:layout="@layout/fragment_loan_detail" />
+        tools:layout="@layout/fragment_loan_detail">
+        <argument
+            android:name="Loan"
+            app:argType="com.ekachandra.core.domain.model.Loan" />
+    </fragment>
 </navigation>

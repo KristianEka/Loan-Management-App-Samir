@@ -1,8 +1,12 @@
 package com.ekachandra.core.domain.model
 
+import android.os.Parcelable
 import com.ekachandra.core.data.source.remote.response.DocumentsItem
 import com.ekachandra.core.data.source.remote.response.RepaymentSchedule
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
+@Parcelize
 data class Loan(
     val id: String? = null,
     val borrowerName: String? = null,
@@ -15,6 +19,6 @@ data class Loan(
     val creditScore: Int? = null,
     val collateralType: String? = null,
     val collateralValue: Double? = null,
-    val repaymentSchedule: RepaymentSchedule? = null,
-    val documents: List<DocumentsItem?>? = null,
-)
+    val repaymentSchedule: @RawValue RepaymentSchedule? = null,
+    val documents: @RawValue List<DocumentsItem?>? = null,
+) : Parcelable

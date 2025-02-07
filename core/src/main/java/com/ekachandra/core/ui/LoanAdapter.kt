@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.ekachandra.core.R
 import com.ekachandra.core.databinding.ItemLoanBinding
 import com.ekachandra.core.domain.model.Loan
 
@@ -27,8 +28,15 @@ class LoanAdapter : ListAdapter<Loan, LoanAdapter.ListViewHolder>(DIFF_CALLBACK)
     inner class ListViewHolder(private val binding: ItemLoanBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Loan) {
-            binding.tvBorrowerName.text = data.borrowerName
-            binding.tvLoanAmount.text = data.loanAmount.toString()
+            binding.apply {
+                tvBorrowerName.text = data.borrowerName
+                tvLoanAmount.text = root.context.getString(R.string.loan_amount, data.loanAmount)
+                tvInterestRate.text =
+                    root.context.getString(R.string.interest_rate, data.interestRate)
+                tvTermInMonths.text = root.context.getString(R.string.term_in_months, data.term)
+                tvPurpose.text = root.context.getString(R.string.purpose, data.purpose)
+                tvRiskRating.text = root.context.getString(R.string.risk_rating, data.riskRating)
+            }
         }
 
         init {
