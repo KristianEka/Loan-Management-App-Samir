@@ -13,28 +13,16 @@
         android:padding="20dp">
 
         <TextView
-            android:id="@+id/tv_loan_details_title"
+            android:id="@+id/tv_risk_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/holo_red_light"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Loan Details" />
-
-        <TextView
-            android:id="@+id/tv_risk_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:textColor="@android:color/holo_red_light"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/tv_loan_details_title"
-            app:layout_constraintStart_toStartOf="@+id/tv_loan_details_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_loan_details_title"
             tools:text="Risk: Low" />
 
         <TextView
@@ -42,12 +30,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:text="@string/borrower_information"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_risk_rating"
-            tools:text="Borrower Information" />
+            app:layout_constraintTop_toBottomOf="@id/tv_risk_rating" />
 
         <TextView
             android:id="@+id/tv_borrower_name"
@@ -87,12 +75,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:text="@string/collateral_information"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_credit_score"
-            tools:text="Collateral Information" />
+            app:layout_constraintTop_toBottomOf="@id/tv_credit_score" />
 
         <TextView
             android:id="@+id/tv_collateral_type"
@@ -121,12 +109,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:text="@string/loan_information"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_collateral_value"
-            tools:text="Loan Information" />
+            app:layout_constraintTop_toBottomOf="@id/tv_collateral_value" />
 
         <TextView
             android:id="@+id/tv_loan_amount"
@@ -177,12 +165,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:text="@string/repayment_schedule"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_purpose"
-            tools:text="Repayment Schedule" />
+            app:layout_constraintTop_toBottomOf="@id/tv_purpose" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_repayment_schedule"
@@ -209,7 +197,7 @@
             android:id="@+id/rv_document"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_document_label"

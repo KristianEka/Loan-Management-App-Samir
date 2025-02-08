@@ -8,4 +8,12 @@
     <string name="credit_score">Credit Score: %d</string>
     <string name="collateral_type">Collateral Type: %1$s</string>
     <string name="collateral_value">Collateral Value: %.2f</string>
+    <string name="repayment_schedule">Repayment Schedule</string>
+    <string name="loan_information">Loan Information</string>
+    <string name="collateral_information">Collateral Information</string>
+    <string name="borrower_information">Borrower Information</string>
+    <string name="loan_details">Loan Details</string>
+    <string name="sort_by_amount">Sort By Amount</string>
+    <string name="sort_by_term">Sort By Term</string>
+    <string name="sort_by_purpose">Sort By Purpose</string>
 </resources>

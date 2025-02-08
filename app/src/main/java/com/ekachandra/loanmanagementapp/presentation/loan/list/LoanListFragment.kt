@@ -2,6 +2,9 @@ package com.ekachandra.loanmanagementapp.presentation.loan.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -10,10 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ekachandra.core.data.Resource
 import com.ekachandra.core.ui.LoanAdapter
+import com.ekachandra.loanmanagementapp.R
 import com.ekachandra.loanmanagementapp.databinding.FragmentLoanListBinding
 import com.ekachandra.loanmanagementapp.presentation.loan.LoanViewModel
+import com.ekachandra.loanmanagementapp.presentation.utils.SortType
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@Suppress("DEPRECATION")
 class LoanListFragment : Fragment() {
 
     private var _binding: FragmentLoanListBinding? = null
@@ -39,6 +45,8 @@ class LoanListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setHasOptionsMenu(true)
+
         setAdapter()
         getLoansData()
 
@@ -47,6 +55,43 @@ class LoanListFragment : Fragment() {
             getLoansData()
             swipeRefreshLayout.isRefreshing = false
         }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_sort, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_sort_by_amount -> {
+                sortLoans(SortType.SORT_BY_AMOUNT)
+                true
+            }
+
+            R.id.action_sort_by_term -> {
+                sortLoans(SortType.SORT_BY_TERM)
+                true
+            }
+
+            R.id.action_sort_by_purpose -> {
+                sortLoans(SortType.SORT_BY_PURPOSE)
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun sortLoans(criteria: SortType) {
+        val sortedList = when (criteria) {
+            SortType.SORT_BY_AMOUNT -> adapter.currentList.sortedBy { it.loanAmount }
+            SortType.SORT_BY_TERM -> adapter.currentList.sortedBy { it.term }
+            SortType.SORT_BY_PURPOSE -> adapter.currentList.sortedBy { it.purpose }
+        }
+        adapter.submitList(sortedList)
     }
 
     private fun setAdapter() {

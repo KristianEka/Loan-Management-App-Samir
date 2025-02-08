@@ -8,16 +8,17 @@
     <fragment
         android:id="@+id/loanListFragment"
         android:name="com.ekachandra.loanmanagementapp.presentation.loan.list.LoanListFragment"
-        android:label="fragment_loan_list"
+        android:label="List Loan"
         tools:layout="@layout/fragment_loan_list">
         <action
             android:id="@+id/action_loanListFragment_to_loanDetailFragment"
-            app:destination="@id/loanDetailFragment" />
+            app:destination="@id/loanDetailFragment"
+            app:popUpTo="@id/loanListFragment" />
     </fragment>
     <fragment
         android:id="@+id/loanDetailFragment"
         android:name="com.ekachandra.loanmanagementapp.presentation.loan.detail.LoanDetailFragment"
-        android:label="fragment_loan_detail"
+        android:label="Detail Loan"
         tools:layout="@layout/fragment_loan_detail">
         <argument
             android:name="Loan"

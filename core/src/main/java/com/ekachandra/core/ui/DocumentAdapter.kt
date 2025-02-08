@@ -1,6 +1,7 @@
 package com.ekachandra.core.ui
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -11,6 +12,8 @@ import com.ekachandra.core.data.source.remote.response.DocumentsItem
 import com.ekachandra.core.databinding.ItemDocumentBinding
 
 class DocumentAdapter : ListAdapter<DocumentsItem, DocumentAdapter.ListViewHolder>(DIFF_CALLBACK) {
+
+    var clickMore: Boolean = false
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -34,10 +37,20 @@ class DocumentAdapter : ListAdapter<DocumentsItem, DocumentAdapter.ListViewHolde
             binding.apply {
                 tvDocumentType.text = data.type
                 ivDocument.contentDescription = data.type
-                Glide.with(root)
-                    .load("${BuildConfig.BASE_URL}${data.url}")
-                    .into(ivDocument)
+                data.url?.let {
+                    Glide.with(root)
+                        .load("${BuildConfig.BASE_URL}$it")
+                        .into(ivDocument)
+                }
 
+                ivDocument.visibility = if (clickMore) View.VISIBLE else View.GONE
+            }
+        }
+
+        init {
+            itemView.setOnClickListener {
+                clickMore = !clickMore
+                notifyItemChanged(adapterPosition)
             }
         }
 
