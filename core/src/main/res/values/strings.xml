@@ -8,4 +8,6 @@
     <string name="profile_picture">Profile Picture</string>
     <string name="no_data_can_be_displayed">No data can be displayed</string>
     <string name="documents">Documents</string>
+    <string name="click_to_see_the_document">Click here to see the document</string>
+    <string name="click_to_hide_the_document">Click here to hide the document</string>
 </resources>

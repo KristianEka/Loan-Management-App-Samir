@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ekachandra.core.BuildConfig
+import com.ekachandra.core.R
 import com.ekachandra.core.data.source.remote.response.DocumentsItem
 import com.ekachandra.core.databinding.ItemDocumentBinding
 
@@ -43,7 +44,15 @@ class DocumentAdapter : ListAdapter<DocumentsItem, DocumentAdapter.ListViewHolde
                         .into(ivDocument)
                 }
 
-                ivDocument.visibility = if (clickMore) View.VISIBLE else View.GONE
+                if (clickMore) {
+                    ivDocument.visibility = View.VISIBLE
+                    tvDocumentGuide.text =
+                        root.context.getString(R.string.click_to_hide_the_document)
+                } else {
+                    ivDocument.visibility = View.GONE
+                    tvDocumentGuide.text =
+                        root.context.getString(R.string.click_to_see_the_document)
+                }
             }
         }
 
