@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loan_amount">$ %.2f</string>
+    <string name="interest_rate">Interest: %.2f%%</string>
+    <string name="term_in_months">%1$d Months</string>
+    <string name="purpose">Purpose: %1$s</string>
+    <string name="risk_rating">Risk: %1$s</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="no_data_can_be_displayed">No data can be displayed</string>
+    <string name="documents">Documents</string>
+    <string name="click_to_see_the_document">Click here to see the document</string>
+    <string name="click_to_hide_the_document">Click here to hide the document</string>
+</resources>

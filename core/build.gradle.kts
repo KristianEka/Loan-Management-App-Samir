@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -16,7 +17,7 @@ android {
         buildConfigField(
             "String",
             "BASE_URL",
-            "\"https://raw.githubusercontent.com/andreascandle/p2p_json_test/main\""
+            "\"https://raw.githubusercontent.com/andreascandle/p2p_json_test/main/\""
         )
     }
 
